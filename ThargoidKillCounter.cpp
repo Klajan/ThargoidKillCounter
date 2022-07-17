@@ -6,6 +6,7 @@
 
 int main()
 {
+    OutputHandler output;
     std::wstring logfolder = getLogFolder();
     LogDirReader reader = LogDirReader(logfolder);
     LogReader parser = LogReader();
@@ -17,5 +18,9 @@ int main()
         parser.readFile(file.value(), kills);
     }
     std::cout << std::endl << std::endl;
-    OutputHandler::killsToTable(kills);
+    output.killsToTable(kills);
+
+    //wait for intput to close window
+    std::cout << std::endl << "press any key to exit" << std::endl;
+    std::cin.get();
 }

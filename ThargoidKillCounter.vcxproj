@@ -139,13 +139,16 @@
     <ClCompile Include="ThargoidKillCounter.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ANSICodes.h" />
+    <ClInclude Include="TerminalColors.h" />
     <ClInclude Include="OutputHandler.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="KillCounter.h" />
     <ClInclude Include="LogReader.h" />
     <ClInclude Include="Thargoid.h" />
     <ClInclude Include="LogDirReader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

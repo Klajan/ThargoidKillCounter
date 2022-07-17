@@ -6,15 +6,21 @@ void OutputHandler::killsToTable(KillCounter& kills)
 {
 	//cout << left << setw(50) << setfill('@') << "@" << endl;
 	//cout << "@   "; makeColumn(Thargoid::toString(Thargoid::Scout), nameWidth); makeColumn(kills.Scout(), numWidth); cout << "   @" << endl;
-	makeRow("Thargoid Type", "Kill Count", ANSIRESET);
+	makeRow("Thargoid Type", "Kill Count");
 	makeBlankRow();
-	makeRow(Thargoid::toString(Thargoid::Unknown), std::to_string(kills.Unknown()), ANSIRESET);
-	makeRow(Thargoid::toString(Thargoid::Scout), std::to_string(kills.Scout()), ANSICYAN);
-	makeRow(Thargoid::toString(Thargoid::Cyclops), std::to_string(kills.Cyclops()), ANSIWHITE);
-	makeRow(Thargoid::toString(Thargoid::Basilisk), std::to_string(kills.Basilisk()), ANSIRED);
-	makeRow(Thargoid::toString(Thargoid::Medusa), std::to_string(kills.Medusa()), ANSIMAGENTA);
-	makeRow(Thargoid::toString(Thargoid::Hydra), std::to_string(kills.Hydra()), ANSIYELLOW);
-	cout << ANSIRESET;
+	cout << termcolor::bright_grey;
+	makeRow(Thargoid::toString(Thargoid::Unknown), std::to_string(kills.Unknown()));
+	cout << termcolor::green;
+	makeRow(Thargoid::toString(Thargoid::Scout), std::to_string(kills.Scout()));
+	cout << termcolor::white;
+	makeRow(Thargoid::toString(Thargoid::Cyclops), std::to_string(kills.Cyclops()));
+	cout << termcolor::red;
+	makeRow(Thargoid::toString(Thargoid::Basilisk), std::to_string(kills.Basilisk()));
+	cout << termcolor::magenta;
+	makeRow(Thargoid::toString(Thargoid::Medusa), std::to_string(kills.Medusa()));
+	cout << termcolor::yellow;
+	makeRow(Thargoid::toString(Thargoid::Hydra), std::to_string(kills.Hydra()));
+	cout << termcolor::reset;
 }
 
 template<typename T> void OutputHandler::makeColumn(T t, const int& width)
@@ -43,7 +49,39 @@ void OutputHandler::makeRow(std::string a, std::string b, const char* ANSI)
 
 void OutputHandler::makeBlankRow()
 {
-	cout << ANSIWHITE;
+	cout << termcolor::reset;
 	cout << left << setw(nameWidth) << setfill('-') << "-";
 	cout << left << setw(numWidth) << setfill('-') << "|" << endl;
 }
+
+void OutputHandler::setTermColor()
+{
+}
+
+// begin platform dependent code
+
+#ifdef _WIN32
+OutputHandler::OutputHandler()
+{
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	if (hOut != INVALID_HANDLE_VALUE)
+	{
+		DWORD dwMode = 0;
+		if (GetConsoleMode(hOut, &dwMode))
+		{
+			dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+			SetConsoleMode(hOut, dwMode);
+		}
+	}
+}
+#else
+void OutputHandler::OutputHandler()
+{
+
+}
+
+void OutputHandler::setColor(termcolor color)
+{
+
+}
+#endif // _WIN32

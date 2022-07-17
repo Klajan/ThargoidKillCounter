@@ -2,24 +2,26 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include "include/termcolor/termcolor.hpp"
 
 #include "KillCounter.h"
 #include "Thargoid.h"
-#include "ANSICodes.h"
 
-static class OutputHandler
+class OutputHandler
 {
 private:
-	static const char separator = ' ';
-	static const int nameWidth = 14;
-	static const int numWidth = 13;
+	const char separator = ' ';
+	const int nameWidth = 14;
+	const int numWidth = 13;
 
-	template<typename T> static void makeColumn(T t, const int& width);
-	template<typename T> static void makeColumn(T t, const int& width, const char*);
-	static void makeRow(std::string, std::string);
-	static void makeRow(std::string, std::string, const char*);
-	static void makeBlankRow();
+	template<typename T> void makeColumn(T t, const int& width);
+	template<typename T> void makeColumn(T t, const int& width, const char*);
+	void makeRow(std::string, std::string);
+	void makeRow(std::string, std::string, const char*);
+	void makeBlankRow();
 
 public:
-	static void killsToTable(KillCounter&);
+	OutputHandler();
+	void killsToTable(KillCounter&);
+	void setTermColor();
 };

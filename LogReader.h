@@ -4,7 +4,7 @@
 #include <string>
 #include <optional>
 #include <filesystem>
-#include "nlohmann/json.hpp"
+#include "include/nlohmann/json.hpp"
 
 #include "Thargoid.h"
 #include "KillCounter.h"

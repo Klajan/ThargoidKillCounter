@@ -1,4 +1,5 @@
 #pragma once
+
 #define ANSIRESET		"\033[0m"
 #define ANSIBLACK		"\033[30m"
 #define ANSIRED			"\033[31m"
