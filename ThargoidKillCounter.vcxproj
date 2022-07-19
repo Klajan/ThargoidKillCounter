@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -132,15 +132,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="journal\KillBond.cpp" />
     <ClCompile Include="OutputHandler.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="KillCounter.cpp" />
     <ClCompile Include="LogDirReader.cpp" />
     <ClCompile Include="LogReader.cpp" />
+    <ClCompile Include="journal\SupercruiseExit.cpp" />
     <ClCompile Include="ThargoidKillCounter.cpp" />
+    <ClCompile Include="journal\USSDrop.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\nlohmann\json.hpp" />
+    <ClInclude Include="include\termcolor\termcolor.hpp" />
+    <ClInclude Include="journal\JournalEvent.hpp" />
+    <ClInclude Include="journal\KillBond.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="journal\SupercruiseExit.h" />
     <ClInclude Include="TerminalColors.h" />
     <ClInclude Include="OutputHandler.h" />
     <ClInclude Include="Functions.h" />
@@ -148,12 +156,16 @@
     <ClInclude Include="LogReader.h" />
     <ClInclude Include="Thargoid.h" />
     <ClInclude Include="LogDirReader.h" />
+    <ClInclude Include="journal\USSDrop.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ThargoidKillCounter.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="journal\journal examples.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

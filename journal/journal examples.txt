@@ -1,0 +1,3 @@
+{ "timestamp":"2022-07-14T12:38:46Z", "event":"USSDrop", "USSType":"$USS_Type_NonHuman;", "USSType_Localised":"Nonhuman signal source", "USSThreat":7 }
+{ "timestamp":"2022-07-14T12:38:48Z", "event":"SupercruiseExit", "Taxi":false, "Multicrew":false, "StarSystem":"Merope", "SystemAddress":224644818084, "Body":"Merope", "BodyID":0, "BodyType":"Star" }
+{ "timestamp":"2022-07-14T13:14:42Z", "event":"FactionKillBond", "Reward":40000000, "AwardingFaction":"$faction_PilotsFederation;", "AwardingFaction_Localised":"Pilots' Federation", "VictimFaction":"$faction_Thargoid;", "VictimFaction_Localised":"Thargoids" }
