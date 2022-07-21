@@ -132,31 +132,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="journal\KillBond.cpp" />
+    <ClCompile Include="journal\JournalProcessor.cpp" />
+    <ClCompile Include="journal\events\JournalEvent.cpp" />
+    <ClCompile Include="journal\events\KillBond.cpp" />
+    <ClCompile Include="journal\events\SupercruiseExit.cpp" />
+    <ClCompile Include="journal\events\USSDrop.cpp" />
     <ClCompile Include="OutputHandler.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="KillCounter.cpp" />
-    <ClCompile Include="LogDirReader.cpp" />
-    <ClCompile Include="LogReader.cpp" />
-    <ClCompile Include="journal\SupercruiseExit.cpp" />
+    <ClCompile Include="journal\LogDirReader.cpp" />
+    <ClCompile Include="journal\LogReader.cpp" />
     <ClCompile Include="ThargoidKillCounter.cpp" />
-    <ClCompile Include="journal\USSDrop.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\nlohmann\json.hpp" />
-    <ClInclude Include="include\termcolor\termcolor.hpp" />
-    <ClInclude Include="journal\JournalEvent.hpp" />
-    <ClInclude Include="journal\KillBond.h" />
+    <ClInclude Include="extrenal\nlohmann\json.hpp" />
+    <ClInclude Include="extrenal\termcolor\termcolor.hpp" />
+    <ClInclude Include="journal\JournalProcessor.h" />
+    <ClInclude Include="journal\events\JournalEvent.h" />
+    <ClInclude Include="journal\events\JournalEventLib.h" />
+    <ClInclude Include="journal\events\KillBond.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="journal\SupercruiseExit.h" />
+    <ClInclude Include="journal\events\SupercruiseExit.h" />
     <ClInclude Include="TerminalColors.h" />
     <ClInclude Include="OutputHandler.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="KillCounter.h" />
-    <ClInclude Include="LogReader.h" />
-    <ClInclude Include="Thargoid.h" />
-    <ClInclude Include="LogDirReader.h" />
-    <ClInclude Include="journal\USSDrop.h" />
+    <ClInclude Include="journal\LogReader.h" />
+    <ClInclude Include="Thargoid.hpp" />
+    <ClInclude Include="journal\LogDirReader.h" />
+    <ClInclude Include="journal\events\USSDrop.h" />
+    <ClInclude Include="WorkQueue.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
@@ -165,7 +170,7 @@
     <ResourceCompile Include="ThargoidKillCounter.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="journal\journal examples.txt" />
+    <Text Include="journal\events\journal examples.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

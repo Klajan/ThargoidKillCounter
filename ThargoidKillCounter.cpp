@@ -1,7 +1,8 @@
 #include <iostream>
+#include <thread>
 #include "Functions.h"
-#include "LogDirReader.h"
-#include "LogReader.h"
+#include "journal/LogDirReader.h"
+#include "journal/LogReader.h"
 #include "OutputHandler.h"
 
 int main()

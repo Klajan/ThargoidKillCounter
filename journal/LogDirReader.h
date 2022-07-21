@@ -13,8 +13,8 @@ private:
 	std::queue<std::filesystem::path> logQueue;
 
 	bool isLogFile(std::filesystem::path);
-	static std::wstring getFileName(std::wstring path);
 public:
+	LogDirReader() {};
 	LogDirReader(std::wstring);
 	void readDir();
 	void readDir(std::wstring path);

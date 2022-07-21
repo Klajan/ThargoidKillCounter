@@ -18,7 +18,7 @@
     <ClCompile Include="ThargoidKillCounter.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="LogDirReader.cpp">
+    <ClCompile Include="journal\LogDirReader.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="KillCounter.cpp">
@@ -27,24 +27,30 @@
     <ClCompile Include="Functions.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="LogReader.cpp">
+    <ClCompile Include="journal\LogReader.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="OutputHandler.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="journal\USSDrop.cpp">
+    <ClCompile Include="journal\events\JournalEvent.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="journal\SupercruiseExit.cpp">
+    <ClCompile Include="journal\events\KillBond.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="journal\KillBond.cpp">
+    <ClCompile Include="journal\events\SupercruiseExit.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="journal\events\USSDrop.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="journal\JournalProcessor.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LogDirReader.h">
+    <ClInclude Include="journal\LogDirReader.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="KillCounter.h">
@@ -53,10 +59,10 @@
     <ClInclude Include="Functions.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="LogReader.h">
+    <ClInclude Include="journal\LogReader.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Thargoid.h">
+    <ClInclude Include="Thargoid.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="OutputHandler.h">
@@ -68,22 +74,31 @@
     <ClInclude Include="resource.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="include\nlohmann\json.hpp">
+    <ClInclude Include="extrenal\nlohmann\json.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="include\termcolor\termcolor.hpp">
+    <ClInclude Include="extrenal\termcolor\termcolor.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="journal\JournalEvent.hpp">
+    <ClInclude Include="journal\events\JournalEvent.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="journal\USSDrop.h">
+    <ClInclude Include="journal\events\USSDrop.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="journal\SupercruiseExit.h">
+    <ClInclude Include="journal\events\SupercruiseExit.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="journal\KillBond.h">
+    <ClInclude Include="journal\events\KillBond.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="journal\events\JournalEventLib.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="journal\JournalProcessor.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkQueue.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -96,6 +111,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="journal\journal examples.txt" />
+    <Text Include="journal\events\journal examples.txt" />
   </ItemGroup>
 </Project>

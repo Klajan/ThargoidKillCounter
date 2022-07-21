@@ -1,5 +1,5 @@
 #pragma once
-#include "Thargoid.h"
+#include "Thargoid.hpp"
 
 class KillCounter
 {
