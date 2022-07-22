@@ -2,7 +2,8 @@
 
 JournalProcessor::JournalProcessor() : max_threads(std::thread::hardware_concurrency()), read_threads(std::max((int)(max_threads * 0.75), 3)), process_treads(std::max((int)(max_threads * 0.25), 1))
 {
-	
+	thread_pool_read = std::vector<std::thread>(read_threads);
+	thread_pool_proc = std::vector<std::thread>(process_treads);
 }
 
 void JournalProcessor::readLogThread()
@@ -36,7 +37,8 @@ void JournalProcessor::processLogThread()
 {
 	while (run)
 	{
-
+		auto result = _workQueue.pop_wait();
+		eventProcessor.processEventeQueue(std::move(result));
 	}
 }
 
@@ -45,13 +47,29 @@ void JournalProcessor::addJournalLocation(std::wstring path)
 	dirReader.readDir(path);
 }
 
-std::promise<void> JournalProcessor::start()
+void JournalProcessor::start()
 {
-
+	for (int i = 0; i < read_threads; i++)
+	{
+		thread_pool_read[i] = std::thread(&JournalProcessor::readLogThread, this);
+	}
+	for (int i = 0; i < process_treads; i++)
+	{
+		thread_pool_proc[i] = std::thread(&JournalProcessor::processLogThread, this);
+	}
 }
 
-std::promise<void> JournalProcessor::stop()
+void JournalProcessor::stop()
 {
 	run = false;
 	_workQueue.notifyAll();
+	for (std::thread& thread : thread_pool_read)
+	{
+		thread.join();
+	}
+	for (std::thread& thread : thread_pool_proc)
+	{
+		thread.join();
+	}
+	return;
 }

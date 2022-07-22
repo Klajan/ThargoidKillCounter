@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="journal\EventProcessor.cpp" />
     <ClCompile Include="journal\JournalProcessor.cpp" />
     <ClCompile Include="journal\events\JournalEvent.cpp" />
     <ClCompile Include="journal\events\KillBond.cpp" />
@@ -142,9 +143,11 @@
     <ClCompile Include="KillCounter.cpp" />
     <ClCompile Include="journal\LogDirReader.cpp" />
     <ClCompile Include="journal\LogReader.cpp" />
+    <ClCompile Include="ThargoidKill.cpp" />
     <ClCompile Include="ThargoidKillCounter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="journal\EventProcessor.h" />
     <ClInclude Include="extrenal\nlohmann\json.hpp" />
     <ClInclude Include="extrenal\termcolor\termcolor.hpp" />
     <ClInclude Include="journal\JournalProcessor.h" />
@@ -161,6 +164,7 @@
     <ClInclude Include="Thargoid.hpp" />
     <ClInclude Include="journal\LogDirReader.h" />
     <ClInclude Include="journal\events\USSDrop.h" />
+    <ClInclude Include="ThargoidKill.h" />
     <ClInclude Include="WorkQueue.hpp" />
   </ItemGroup>
   <ItemGroup>

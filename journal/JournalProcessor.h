@@ -6,6 +6,7 @@
 #include "../WorkQueue.hpp"
 #include "LogDirReader.h"
 #include "LogReader.h"
+#include "EventProcessor.h"
 
 class JournalProcessor
 {
@@ -16,8 +17,10 @@ class JournalProcessor
 	bool run = true;
 
 	LogDirReader dirReader;
+	EventProcessor eventProcessor;
 
-	std::vector<std::thread> thread_pool;
+	std::vector<std::thread> thread_pool_read;
+	std::vector<std::thread> thread_pool_proc;
 	WorkQueue<std::queue<std::unique_ptr<Journal::JournalEvent>>> _workQueue;
 
 	void readLogThread();
@@ -29,7 +32,7 @@ public:
 
 	void addJournalLocation(std::wstring path);
 
-	std::promise<void> start();
-	std::promise<void> stop();
+	void start();
+	void stop();
 };
 

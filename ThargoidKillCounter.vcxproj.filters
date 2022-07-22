@@ -48,6 +48,12 @@
     <ClCompile Include="journal\JournalProcessor.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="ThargoidKill.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="journal\EventProcessor.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="journal\LogDirReader.h">
@@ -99,6 +105,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="WorkQueue.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ThargoidKill.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="journal\EventProcessor.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
