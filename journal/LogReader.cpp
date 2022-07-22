@@ -23,16 +23,19 @@ std::unique_ptr<Journal::JournalEvent> LogReader::parseLine_new(std::wstring& li
 	auto parsed = json::parse(line);
 	try
 	{
-		std::string ev = parsed.at("event");
-		if (ev == "FactionKillBond")
+		std::string event_ = parsed.at("event");
+		if (event_ == "FactionKillBond")
 		{
-			return std::unique_ptr<Journal::JournalEvent>(new Journal::KillBond(parsed));
+			std::string victim = parsed.at("VictimFaction");
+			if (victim == "$faction_Thargoid;") {
+				return std::unique_ptr<Journal::JournalEvent>(new Journal::KillBond(parsed));
+			}
 		}
-		else if (ev == "USSDrop")
+		else if (event_ == "USSDrop")
 		{
 			return std::unique_ptr<Journal::JournalEvent>(new Journal::USSDrop(parsed));
 		}
-		else if( ev == "SupercruiseExit")
+		else if( event_ == "SupercruiseExit")
 		{
 			return std::unique_ptr<Journal::JournalEvent>(new Journal::SupercruiseExit(parsed));
 		}
