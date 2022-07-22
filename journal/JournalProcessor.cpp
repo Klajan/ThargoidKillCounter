@@ -1,6 +1,6 @@
 #include "JournalProcessor.h"
 
-JournalProcessor::JournalProcessor() : max_threads(std::thread::hardware_concurrency()), read_threads(std::max((int)(max_threads * 0.75), 3)), process_treads(std::max((int)(max_threads * 0.25), 1))
+JournalProcessor::JournalProcessor() : max_threads(std::thread::hardware_concurrency()), process_treads(std::max((int)(max_threads * 0.25), 1)), read_threads(std::max((int)(max_threads - process_treads), 3))
 {
 	thread_pool_read = std::vector<std::thread>(read_threads);
 	thread_pool_proc = std::vector<std::thread>(process_treads);
@@ -8,27 +8,25 @@ JournalProcessor::JournalProcessor() : max_threads(std::thread::hardware_concurr
 
 void JournalProcessor::readLogThread()
 {
-	static std::mutex dirReadMutex;
+	std::optional<std::filesystem::path> file;
+	std::queue<std::unique_ptr<Journal::JournalEvent>>* eventQueue;
+	LogReader reader;
+	while (run)
 	{
-		std::optional<std::filesystem::path> file;
-		std::queue<std::unique_ptr<Journal::JournalEvent>>* eventQueue;
-		LogReader reader;
-		while (run)
 		{
-			{
-				const std::scoped_lock<std::mutex> lock(dirReadMutex);
-				file = dirReader.getNextFile();
-			}
-			eventQueue = new std::queue<std::unique_ptr<Journal::JournalEvent>>();
-			if (file) {
-				reader.readFile(file.value(), *eventQueue);
-				_workQueue.push(eventQueue);
-			}
-			else
-			{
-				delete eventQueue;
-				return;
-			}
+			const std::scoped_lock<std::mutex> lock(readLogMutex);
+			file = dirReader.getNextFile();
+		}
+		eventQueue = new std::queue<std::unique_ptr<Journal::JournalEvent>>();
+		if (file) {
+			reader.readFile(file.value(), *eventQueue);
+			_workQueue.push(eventQueue);
+		}
+		else
+		{
+			delete eventQueue;
+			waitUntilDone();
+			return;
 		}
 	}
 }
@@ -38,17 +36,36 @@ void JournalProcessor::processLogThread()
 	while (run)
 	{
 		auto result = _workQueue.pop_wait();
-		eventProcessor.processEventeQueue(std::move(result));
+		if (result)
+		{
+			eventProcessor.processEventeQueue(std::move(result));
+		}
 	}
 }
 
-void JournalProcessor::addJournalLocation(std::wstring path)
+bool JournalProcessor::addJournalLocation(std::wstring path)
 {
-	dirReader.readDir(path);
+	if (!run)
+	{
+		dirReader.readDir(path);
+		return true;
+	}
+	return false;
 }
 
-void JournalProcessor::start()
+void JournalProcessor::waitUntilDone()
 {
+	if (waiting) return;
+	waiting = true;
+	std::future<void> empty = _workQueue.notifyOnEmpty();
+	_workQueue.notifyAll();
+	empty.wait();
+	done.set_value();
+}
+
+std::future<void> JournalProcessor::start()
+{
+	run = true;
 	for (int i = 0; i < read_threads; i++)
 	{
 		thread_pool_read[i] = std::thread(&JournalProcessor::readLogThread, this);
@@ -57,6 +74,7 @@ void JournalProcessor::start()
 	{
 		thread_pool_proc[i] = std::thread(&JournalProcessor::processLogThread, this);
 	}
+	return done.get_future();
 }
 
 void JournalProcessor::stop()

@@ -10,6 +10,7 @@ class EventProcessor
 {
 private:
 	KillCounter counter;
+	std::mutex listMutex;
 public:
 	EventProcessor();
 	EventProcessor(KillCounter& counter);

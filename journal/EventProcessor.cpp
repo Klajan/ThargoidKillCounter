@@ -50,9 +50,6 @@ void EventProcessor::processEventeQueue(std::unique_ptr<std::queue<std::unique_p
 			break;
 		}
 	}
-	static std::mutex listMutex;
-	{
-		std::scoped_lock lock(listMutex);
-		counter.mergeList(kills);
-	}
+	std::scoped_lock lock(listMutex);
+	counter.mergeList(kills);
 }

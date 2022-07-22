@@ -11,10 +11,12 @@
 class JournalProcessor
 {
 	const int max_threads;
-	const int read_threads;
 	const int process_treads;
+	const int read_threads;
+	
 
-	bool run = true;
+	std::promise<void> done;
+	bool run = false;
 
 	LogDirReader dirReader;
 	EventProcessor eventProcessor;
@@ -23,16 +25,21 @@ class JournalProcessor
 	std::vector<std::thread> thread_pool_proc;
 	WorkQueue<std::queue<std::unique_ptr<Journal::JournalEvent>>> _workQueue;
 
+	std::mutex readLogMutex;
+	bool waiting = false;
+
 	void readLogThread();
 	void processLogThread();
-
+	void waitUntilDone();
 
 public:
 	JournalProcessor();
 
-	void addJournalLocation(std::wstring path);
+	bool addJournalLocation(std::wstring path);
 
-	void start();
+	std::future<void> start();
 	void stop();
+
+	KillCounter& getKillCounter() { return eventProcessor.getKillCounter(); }
 };
 
