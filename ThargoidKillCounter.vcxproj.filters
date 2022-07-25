@@ -125,4 +125,12 @@
   <ItemGroup>
     <Text Include="journal\events\journal examples.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="media\TKC.ico.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="TKC.ico">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
