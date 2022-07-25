@@ -30,6 +30,7 @@ std::unique_ptr<Journal::JournalEvent> LogReader::parseLine_new(std::wstring& li
 			if (victim == "$faction_Thargoid;") {
 				return std::unique_ptr<Journal::JournalEvent>(new Journal::KillBond(parsed));
 			}
+			return std::unique_ptr<Journal::JournalEvent>();
 		}
 		else if (event_ == "USSDrop")
 		{
@@ -52,7 +53,6 @@ std::unique_ptr<Journal::JournalEvent> LogReader::parseLine_new(std::wstring& li
 
 void LogReader::readFile(std::filesystem::path filepath, KillCounter& counter)
 {
-	int l = 0;
 	file.open(filepath);
 	std::wstring line;
 	while (std::getline(file, line)) {
