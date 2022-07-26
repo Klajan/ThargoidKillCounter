@@ -1,11 +1,11 @@
 #include <iostream>
 #include <thread>
 #include "Functions.h"
-#include "journal/LogDirReader.h"
-#include "journal/LogReader.h"
-#include "OutputHandler.h"
-#include "journal/JournalProcessor.h"
-#include "journal/EventProcessor.h"
+#include "LogDirReader.h"
+#include "LogReader.h"
+#include "output/OutputHandler.h"
+#include "JournalProcessor.h"
+#include "EventProcessor.h"
 
 int main()
 {

@@ -3,7 +3,7 @@
 #include <thread>
 #include <queue>
 
-#include "../WorkQueue.hpp"
+#include "WorkQueue.hpp"
 #include "LogDirReader.h"
 #include "LogReader.h"
 #include "EventProcessor.h"

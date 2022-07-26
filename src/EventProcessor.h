@@ -2,9 +2,9 @@
 #include <future>
 #include <queue>
 
-#include "events/JournalEventLib.h"
-#include "../ThargoidKill.h"
-#include "../KillCounter.h"
+#include "journal/JournalEventLib.h"
+#include "statistic/ThargoidKill.h"
+#include "statistic/KillCounter.h"
 
 class EventProcessor
 {

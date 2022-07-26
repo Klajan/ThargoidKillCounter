@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 
-#include "../../external/nlohmann/json.hpp"
+#include "../external/nlohmann/json.hpp"
 
 namespace Journal
 {

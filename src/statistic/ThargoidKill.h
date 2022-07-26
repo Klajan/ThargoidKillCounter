@@ -2,8 +2,8 @@
 #include <chrono>
 #include <string>
 #include <memory>
-#include "Thargoid.hpp"
-#include "journal/events/JournalEventLib.h"
+#include "../Thargoid.hpp"
+#include "../journal/JournalEventLib.h"
 
 class ThargoidKill
 {

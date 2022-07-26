@@ -1,6 +1,6 @@
 #pragma once
 #include "JournalEvent.h"
-#include "../../Thargoid.hpp"
+#include "../Thargoid.hpp"
 
 namespace Journal
 {

@@ -6,11 +6,11 @@
 #include <filesystem>
 #include <queue>
 #include <memory>
-#include "../external/nlohmann/json.hpp"
+#include "external/nlohmann/json.hpp"
 
-#include "../Thargoid.hpp"
-#include "../KillCounter.h"
-#include "events/JournalEventLib.h"
+#include "Thargoid.hpp"
+#include "statistic/KillCounter.h"
+#include "journal/JournalEventLib.h"
 
 
 class LogReader

@@ -1,6 +1,6 @@
 #pragma once
-#include "Thargoid.hpp"
-#include "journal/events/JournalEventLib.h"
+#include "../Thargoid.hpp"
+#include "../journal/JournalEventLib.h"
 #include "ThargoidKill.h"
 #include <memory>
 #include <queue>
