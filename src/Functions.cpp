@@ -11,4 +11,19 @@ std::wstring getLogFolder()
     }
     return logpath;
 }
+
+bool isAttachedConsole()
+{
+    HWND consoleWnd = GetConsoleWindow();
+    DWORD dwProcessId;
+    GetWindowThreadProcessId(consoleWnd, &dwProcessId);
+    if (GetCurrentProcessId() == dwProcessId)
+    {
+        return false;
+    }
+    else
+    {
+        return false;
+    }
+}
 #endif

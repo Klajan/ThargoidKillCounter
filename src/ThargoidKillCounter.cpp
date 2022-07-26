@@ -39,6 +39,8 @@ int main()
     output.killsToTable(kills);
 
     //wait for intput to close window
-    std::cout << std::endl << "press any key to exit" << std::endl;
-    std::cin.get();
+    if (!isAttachedConsole()) {
+        std::cout << std::endl << "press any key to exit" << std::endl;
+        std::cin.get();
+    }
 }
