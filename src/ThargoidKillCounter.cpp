@@ -10,7 +10,7 @@
 int main()
 {
     OutputHandler output;
-    std::wstring logfolder = getLogFolder();
+    std::wstring logfolder = getDefaultLogFolder();
     LogDirReader reader = LogDirReader(logfolder);
     LogReader parser = LogReader();
     KillCounter kills = KillCounter();

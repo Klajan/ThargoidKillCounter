@@ -7,5 +7,5 @@
 ... // linux code goes here
 #endif
 
-std::wstring getLogFolder();
+std::wstring getDefaultLogFolder();
 bool isAttachedConsole();

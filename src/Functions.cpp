@@ -1,7 +1,7 @@
 #include "Functions.h"
 
 #ifdef _WIN32
-std::wstring getLogFolder()
+std::wstring getDefaultLogFolder()
 {
     WCHAR path[MAX_PATH];
     std::wstring logpath;
@@ -14,16 +14,14 @@ std::wstring getLogFolder()
 
 bool isAttachedConsole()
 {
-    HWND consoleWnd = GetConsoleWindow();
-    DWORD dwProcessId;
+    static bool attached = true;
+    static HWND consoleWnd = GetConsoleWindow();
+    static DWORD dwProcessId = 0;
+
+    if (dwProcessId != 0) return attached;
+
     GetWindowThreadProcessId(consoleWnd, &dwProcessId);
-    if (GetCurrentProcessId() == dwProcessId)
-    {
-        return false;
-    }
-    else
-    {
-        return false;
-    }
+    attached = !(GetCurrentProcessId() == dwProcessId);
+    return attached;
 }
 #endif
