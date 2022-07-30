@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -70,7 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -123,6 +125,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,28 +136,52 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="OutputHandler.cpp" />
-    <ClCompile Include="Functions.cpp" />
-    <ClCompile Include="KillCounter.cpp" />
-    <ClCompile Include="LogDirReader.cpp" />
-    <ClCompile Include="LogReader.cpp" />
-    <ClCompile Include="ThargoidKillCounter.cpp" />
+    <ClCompile Include="src\EventProcessor.cpp" />
+    <ClCompile Include="src\JournalProcessor.cpp" />
+    <ClCompile Include="src\journal\JournalEvent.cpp" />
+    <ClCompile Include="src\journal\KillBond.cpp" />
+    <ClCompile Include="src\journal\SupercruiseExit.cpp" />
+    <ClCompile Include="src\journal\USSDrop.cpp" />
+    <ClCompile Include="src\output\OutputHandler.cpp" />
+    <ClCompile Include="src\Functions.cpp" />
+    <ClCompile Include="src\statistic\KillCounter.cpp" />
+    <ClCompile Include="src\LogDirReader.cpp" />
+    <ClCompile Include="src\LogReader.cpp" />
+    <ClCompile Include="src\statistic\ThargoidKill.cpp" />
+    <ClCompile Include="src\ThargoidKillCounter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\EventProcessor.h" />
+    <ClInclude Include="extrenal\nlohmann\json.hpp" />
+    <ClInclude Include="extrenal\termcolor\termcolor.hpp" />
+    <ClInclude Include="src\JournalProcessor.h" />
+    <ClInclude Include="src\journal\JournalEvent.h" />
+    <ClInclude Include="src\journal\JournalEventLib.h" />
+    <ClInclude Include="src\journal\KillBond.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="TerminalColors.h" />
-    <ClInclude Include="OutputHandler.h" />
-    <ClInclude Include="Functions.h" />
-    <ClInclude Include="KillCounter.h" />
-    <ClInclude Include="LogReader.h" />
-    <ClInclude Include="Thargoid.h" />
-    <ClInclude Include="LogDirReader.h" />
+    <ClInclude Include="src\journal\SupercruiseExit.h" />
+    <ClInclude Include="src\output\OutputHandler.h" />
+    <ClInclude Include="src\Functions.h" />
+    <ClInclude Include="src\statistic\KillCounter.h" />
+    <ClInclude Include="src\LogReader.h" />
+    <ClInclude Include="src\Thargoid.hpp" />
+    <ClInclude Include="src\LogDirReader.h" />
+    <ClInclude Include="src\journal\USSDrop.h" />
+    <ClInclude Include="src\statistic\ThargoidKill.h" />
+    <ClInclude Include="src\WorkQueue.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ThargoidKillCounter.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\journal\journal examples.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="TKC.ico" />
+    <Image Include="media\TKC.ico.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

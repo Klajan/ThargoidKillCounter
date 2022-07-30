@@ -2,10 +2,10 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include "include/termcolor/termcolor.hpp"
+#include <termcolor/termcolor.hpp>
 
-#include "KillCounter.h"
-#include "Thargoid.h"
+#include "../statistic/KillCounter.h"
+#include "../Thargoid.hpp"
 
 class OutputHandler
 {
