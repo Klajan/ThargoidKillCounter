@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include "../external/termcolor/termcolor.hpp"
+#include <termcolor/termcolor.hpp>
 
 #include "../statistic/KillCounter.h"
 #include "../Thargoid.hpp"

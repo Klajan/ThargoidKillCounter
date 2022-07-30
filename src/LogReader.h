@@ -6,7 +6,7 @@
 #include <filesystem>
 #include <queue>
 #include <memory>
-#include "external/nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 
 #include "Thargoid.hpp"
 #include "statistic/KillCounter.h"

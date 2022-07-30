@@ -2,8 +2,7 @@
 #include <chrono>
 #include <string>
 #include <sstream>
-
-#include "../external/nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 
 namespace Journal
 {
