@@ -3,6 +3,15 @@
 
 class Thargoid
 {
+private:
+	enum Value_Horizon : int
+	{
+		Scout_old = 20000,
+		Cyclops_old = 2000000,
+		Basilisk_old = 6000000,
+		Medusa_old = 10000000,
+		Hydra_old = 15000000
+	};
 public:
 	enum Class : int
 	{
@@ -34,15 +43,25 @@ public:
 
 	operator std::string()
 	{
-		return Thargoid::toString(value);
+		return Thargoid::to_string(value);
 	}
 
-	std::string toString() const
+	operator std::wstring()
 	{
-		return Thargoid::toString(value);
+		return Thargoid::to_wstring(value);
 	}
 
-	static std::string toString(Class val)
+	std::string to_string() const
+	{
+		return Thargoid::to_string(value);
+	}
+
+	std::wstring to_wstring() const
+	{
+		return Thargoid::to_wstring(value);
+	}
+
+	static std::string to_string(Class val)
 	{
 		switch (val)
 		{
@@ -60,18 +79,27 @@ public:
 			return "Unknown";
 		}
 	}
+	static std::wstring to_wstring(Class val)
+	{
+		switch (val)
+		{
+		case Thargoid::Scout:
+			return L"Scout";
+		case Thargoid::Cyclops:
+			return L"Cyclops";
+		case Thargoid::Basilisk:
+			return L"Basilisk";
+		case Thargoid::Medusa:
+			return L"Medusa";
+		case Thargoid::Hydra:
+			return L"Hydra";
+		default:
+			return L"Unknown";
+		}
+	}
 
 private:
 	Class value;
-
-	enum Value_Horizon : int
-	{
-		Scout_old = 20000,
-		Cyclops_old = 2000000,
-		Basilisk_old = 6000000,
-		Medusa_old = 10000000,
-		Hydra_old = 15000000
-	};
 
 	static Thargoid fromInt(int val)
 	{

@@ -11,8 +11,8 @@ namespace Journal {
 		SupercruiseExit(nlohmann::json& json);
 		SupercruiseExit(std::string timestamp, std::string starsystem, std::string body);
 
-		EventType getEventType() const { return EventType::SupercruiseExit; }
-		std::string starsystem() const { return starsystem_; }
-		std::string body() const { return body_; }
+		EventType getEventType() const noexcept { return EventType::SupercruiseExit; }
+		std::string starsystem() const noexcept { return starsystem_; }
+		std::string body() const noexcept { return body_; }
 	};
 }

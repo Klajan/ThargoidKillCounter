@@ -14,8 +14,8 @@ namespace Journal
 		KillBond(std::string timestamp, int reward);
 		KillBond(std::string timestamp, int reward, Thargoid thargoid);
 
-		EventType getEventType() const { return EventType::KillBond; }
-		Thargoid thargoid() const { return thargoid_; }
-		int reward() const { return reward_; }
+		EventType getEventType() const noexcept override { return EventType::KillBond; }
+		Thargoid thargoid() const noexcept { return thargoid_; }
+		int reward() const noexcept { return reward_; }
 	};
 }

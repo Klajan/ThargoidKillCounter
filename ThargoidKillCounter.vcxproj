@@ -24,6 +24,8 @@
     <ProjectGuid>{24c0c14e-c149-4b60-ab5f-3be69852b4c2}</ProjectGuid>
     <RootNamespace>ThargoidKillCounter</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <VcpkgTriplet Condition="'$(Platform)'=='Win32'">x86-windows</VcpkgTriplet>
+    <VcpkgTriplet Condition="'$(Platform)'=='x64'">x64-windows</VcpkgTriplet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,7 +73,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
@@ -139,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ArgsHandler.cpp" />
     <ClCompile Include="src\EventProcessor.cpp" />
     <ClCompile Include="src\JournalProcessor.cpp" />
     <ClCompile Include="src\journal\JournalEvent.cpp" />
@@ -152,8 +155,11 @@
     <ClCompile Include="src\LogReader.cpp" />
     <ClCompile Include="src\statistic\ThargoidKill.cpp" />
     <ClCompile Include="src\ThargoidKillCounter.cpp" />
+    <ClCompile Include="src\output\Table.cpp" />
+    <ClCompile Include="vcpkg.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ArgsHandler.h" />
     <ClInclude Include="src\EventProcessor.h" />
     <ClInclude Include="extrenal\nlohmann\json.hpp" />
     <ClInclude Include="extrenal\termcolor\termcolor.hpp" />
@@ -172,6 +178,7 @@
     <ClInclude Include="src\journal\USSDrop.h" />
     <ClInclude Include="src\statistic\ThargoidKill.h" />
     <ClInclude Include="src\WorkQueue.hpp" />
+    <ClInclude Include="src\output\Table.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

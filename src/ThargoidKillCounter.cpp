@@ -1,5 +1,6 @@
 #include <iostream>
 #include <thread>
+#include <locale>
 #include "Functions.h"
 #include "LogDirReader.h"
 #include "LogReader.h"
@@ -7,9 +8,11 @@
 #include "JournalProcessor.h"
 #include "EventProcessor.h"
 
-int main()
+int main(int argc, const char* argv[])
 {
-    OutputHandler output;
+    setupConsole();
+
+    Output::OutputHandler output;
     std::wstring logfolder = getDefaultLogFolder();
     std::future<void> waitToDone;
     JournalProcessor processor;
@@ -24,7 +27,7 @@ int main()
 
     //wait for intput to close window
     if (!isAttachedConsole()) {
-        std::cout << std::endl << "press any key to exit" << std::endl;
-        std::cin.get();
+        std::wcout << std::endl << "press any key to exit" << std::endl;
+        std::wcin.get();
     }
 }
