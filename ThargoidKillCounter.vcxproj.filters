@@ -60,7 +60,7 @@
     <ClCompile Include="src\output\Table.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="vcpkg.json">
+    <ClCompile Include="src\string_helpers.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,9 +125,15 @@
     <ClInclude Include="src\output\Table.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\string_helpers.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="vcpkg.json">
+      <Filter>Quelldateien</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ThargoidKillCounter.rc">

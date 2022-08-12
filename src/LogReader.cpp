@@ -2,7 +2,7 @@
 
 using json = nlohmann::json;
 
-std::optional<Thargoid> LogReader::parseLine(std::wstring& line)
+std::optional<Thargoid> LogReader::parseLine_deprecated(std::wstring& line)
 {
 	auto parsed = json::parse(line);
 	if (auto ev = parsed.find("event"); ev != parsed.end() && ev.value() == "FactionKillBond") 
@@ -18,7 +18,7 @@ std::optional<Thargoid> LogReader::parseLine(std::wstring& line)
 	return std::nullopt;
 }
 
-std::unique_ptr<Journal::JournalEvent> LogReader::parseLine_new(std::wstring& line)
+std::unique_ptr<Journal::JournalEvent> LogReader::parseLine(std::wstring& line)
 {
 	auto parsed = json::parse(line);
 	try
@@ -56,7 +56,7 @@ void LogReader::readFile(std::filesystem::path filepath, KillCounter& counter)
 	file.open(filepath);
 	std::wstring line;
 	while (std::getline(file, line)) {
-		if (auto result = parseLine(line))
+		if (auto result = parseLine_deprecated(line))
 		{
 			counter.addKill(result.value());
 		}
@@ -69,7 +69,7 @@ void LogReader::readFile(std::filesystem::path filepath, std::queue<std::unique_
 	file.open(filepath);
 	std::wstring line;
 	while (std::getline(file, line)) {
-		if (auto result = parseLine_new(line))
+		if (auto result = parseLine(line))
 		{
 			queue.push(std::move(result));
 		}

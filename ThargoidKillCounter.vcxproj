@@ -156,7 +156,10 @@
     <ClCompile Include="src\statistic\ThargoidKill.cpp" />
     <ClCompile Include="src\ThargoidKillCounter.cpp" />
     <ClCompile Include="src\output\Table.cpp" />
-    <ClCompile Include="vcpkg.json" />
+    <ClCompile Include="src\string_helpers.cpp" />
+    <None Include="vcpkg.json">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ArgsHandler.h" />
@@ -177,6 +180,7 @@
     <ClInclude Include="src\LogDirReader.h" />
     <ClInclude Include="src\journal\USSDrop.h" />
     <ClInclude Include="src\statistic\ThargoidKill.h" />
+    <ClInclude Include="src\string_helpers.h" />
     <ClInclude Include="src\WorkQueue.hpp" />
     <ClInclude Include="src\output\Table.h" />
   </ItemGroup>
