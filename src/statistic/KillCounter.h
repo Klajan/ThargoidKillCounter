@@ -7,31 +7,38 @@
 
 class KillCounter
 {
-	int Scout_ = 0;
-	long Scout_reward = 0;
-	int Cyclops_ = 0;
-	long Cyclops_reward = 0;
-	int Basilisk_ = 0;
-	long Basilisk_reward = 0;
-	int Medusa_ = 0;
-	long Medusa_reward = 0;
-	int Hydra_ = 0;
-	long Hydra_reward = 0;
-	int Unknown_ = 0;
-	long Unknown_reward = 0;
+	uint32_t Scout_ = 0;
+	int64_t Scout_reward_ = 0;
+	uint32_t Cyclops_ = 0;
+	int64_t Cyclops_reward_ = 0;
+	uint32_t Basilisk_ = 0;
+	int64_t Basilisk_reward_ = 0;
+	uint32_t Medusa_ = 0;
+	int64_t Medusa_reward_ = 0;
+	uint32_t Hydra_ = 0;
+	int64_t Hydra_reward_ = 0;
+	uint32_t Unknown_ = 0;
+	int64_t Unknown_reward_ = 0;
 
 	std::list<ThargoidKill> kill_list = std::list<ThargoidKill>();
 
 public: 
-	int Scout() const { return Scout_; }
-	int Cyclops() const { return Cyclops_; }
-	int Basilisk() const { return Basilisk_; }
-	int Medusa() const { return Medusa_; }
-	int Hydra() const { return Hydra_; }
-	int Unknown() const { return Unknown_; }
+	uint32_t Scout() const { return Scout_; }
+	uint32_t Cyclops() const { return Cyclops_; }
+	uint32_t Basilisk() const { return Basilisk_; }
+	uint32_t Medusa() const { return Medusa_; }
+	uint32_t Hydra() const { return Hydra_; }
+	uint32_t Unknown() const { return Unknown_; }
+
+	int64_t RewardScout() const { return Scout_reward_; }
+	int64_t RewardCyclops() const { return Cyclops_reward_; }
+	int64_t RewardBasilisk() const { return Basilisk_reward_; }
+	int64_t RewardMedusa() const { return Medusa_reward_; }
+	int64_t RewardHydra() const { return Hydra_reward_; }
+	int64_t RewardUnknownd() const { return Unknown_reward_; }
 
 	void addKill(Thargoid type);
-	void addKill(Thargoid type, int reward);
+	void addKill(Thargoid type, int32_t reward);
 
 	void mergeList(std::list<ThargoidKill>&);
 };
